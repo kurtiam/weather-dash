@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <script src="https://kit.fontawesome.com/8bee116590.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Weather</title>
+</head>
+
+<body>
+    <!-- city search area -->
+    <div id="current" style="display: none;"></div>
+
+    <div class='container city'>
+        <div class='row'>
+            <div class='col-sm-3'>
+                <div class='card searchBody'>
+                    <div class='card-body'>
+                        <label>City Search:</label>
+                        <div class="input-group sm-4">
+                            <input id="city-search" type="text" class="form-control" placeholder="Plano, Tx">
+                            <div class="input-group-append">
+                                <button id='city-weather' class="btn btn-dark" onclick="mySave()" type="submit">
+                                    <i id='city' class="fas fa-search citybtn" aria-hidden="true"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <ul id="myUL" class='cardBody history'>
+                            <div id='history'></div>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- city info area -->
+            <div class='col-sm-8'>
+                <div class=' row'>
+                    <div class='card  col-md-12 cardBody'>
+                        <div class='card-body'>
+                            <h5 class='card-title' id='curCity'><img id='weatherIcon'></img>
+                            </h5>
+                            <ul>
+                                <li class='card-text' id='nowTe'>Temp: </li>
+                                <li class='card-text' id='nowHu'>Humidity:</li>
+                                <li class='card-text' id='nowWi'>Windspeed:</li>
+                                <li class='card-text' id='nowUv'>UV Index: </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 day forcst area -->
+                <div class='row'>
+                    <h4 class='card-title fiveday hr.new1'>5 Day Outlook</h4>
+
+                </div>
+                <div class='row' id='forecast'></div>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="script.js"></script>
+    <script src="store.js"></script>
+
+</body>
+
+</html>

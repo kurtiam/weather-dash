@@ -1,0 +1,87 @@
+body {
+	background-image: url("./img/dfw2.gif");
+	/* min-height: 100px; */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+    color: black;
+ 
+} 
+
+.citybtn {
+color: white;
+
+}
+
+.cityInfo {
+
+    position: relative;
+    top: 50px;
+    margin-left: 1px;
+    
+}
+.cardBody {
+height:150px ; 
+width: 650px; 
+margin-left: 0px;
+float: left;
+border: white ;
+position: relative;
+opacity: .7;
+background-color: black;
+color: white;
+margin-bottom: 2px;
+border-radius: 50px;
+padding: 2px; 
+margin-left: 15px; 
+padding-left: 20px; 
+padding-bottom: 10px;
+padding-top: 10px;
+border-style: thin;
+
+} 
+.searchBody {
+    position: relative;
+    height:150px ;
+  
+    opacity: .7;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    padding: 2px; 
+    padding-left: 0px; 
+    width: 250px;
+    margin-left:0px ;
+}
+
+ li {
+    display:block;
+    float:left;
+    padding: 1px; 
+    padding-left: 1px; 
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-left: 15px;
+    margin-top: 0px;
+  
+     } 
+
+
+ hr.new1 {
+    border-top: 1px solid white;
+ }
+
+.fiveday{
+    text-align: center;
+    padding: 0px;
+    margin-left: 50px;
+    margin-top: 0px;
+}
+
+.history{
+height: 755px;
+margin-top:75px;
+padding-top:10px;
+width:175px;
+
+}
