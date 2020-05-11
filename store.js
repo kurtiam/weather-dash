@@ -32,3 +32,16 @@ function reply_click(clicked_id) {
     past(pastCity)
 
 }
+
+
+
+$(document).ready(function () {
+    $('.hBTN').mouseover(function () {
+        pastCity = this.id
+        past(pastCity)
+    });
+});
+
+
+
+

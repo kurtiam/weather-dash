@@ -104,7 +104,6 @@ function reverseDoIt() {
             lon = findCity.results[0].geometry.lng
             city = findCity.results[0].components.city //may need to add logic for .town
             state = findCity.results[0].components.state_code
-
             searchIt()
         }
 
