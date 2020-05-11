@@ -1,15 +1,17 @@
-
+// var cityNow = (window.localStorage.getItem('lastCity'));;
 var cityNow = null;
 
-if (cityNow == null) {
+
+if (localStorage.getItem("lastCity") == null) {
 
     getLocation();
 
 }
-else {
-    searchIt();
 
-    alert("test");
+else {
+    cityNow = localStorage.getItem("lastCity")
+    reverseDoIt();
+    // alert("test");
 
 }
 
@@ -22,11 +24,21 @@ $(document).ready(function () {
 });
 
 
+function past() {
+    // Get value on button click and show alert
+
+    cityNow = pastCity
+    localStorage.setItem("lastCity", cityNow);
+    reverseDoIt();
+};
+
+
+
 var lat = "";
 var lon = "";
 
 function getLocation() {
-    alert("Location");
+    // alert("Location");
 
     x = document.getElementById("current");
     if (navigator.geolocation) {
@@ -55,11 +67,11 @@ function doIt() {
 
     // console.log(loc); WORKS!
     locApiKey = "&key=a5817602162f42e8a517aec3a58d5108"
-    locUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + loc
+    locUrl = "https://api.opencagedata.com/geocode/v1/json?q="
 
     return $.ajax({
         type: "GET",
-        url: locUrl + locApiKey,
+        url: locUrl + loc + locApiKey,
         findCity: "{}",
         async: true,
         success: function (findCity) {
@@ -77,14 +89,14 @@ function doIt() {
 
 function reverseDoIt() {
 
-    locApiKey = ",tx&key=a5817602162f42e8a517aec3a58d5108"
+    locApiKey = "&key=a5817602162f42e8a517aec3a58d5108"
     locUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + cityNow + locApiKey
-
     return $.ajax({
         type: "GET",
         url: locUrl,
         findCity: "{}",
         async: true,
+
         success: function (findCity) {
 
             // console.log(findCity.results[0].geometry.lat); WORKS!
@@ -92,6 +104,7 @@ function reverseDoIt() {
             lon = findCity.results[0].geometry.lng
             city = findCity.results[0].components.city //may need to add logic for .town
             state = findCity.results[0].components.state_code
+
             searchIt()
         }
 
@@ -100,7 +113,9 @@ function reverseDoIt() {
 }
 
 function searchIt() {
-    $("#forecast").html("");
+
+    // $('#forecast').empty();
+
     cityNow = city
     latlon = lat + '&lon=' + lon
     var day0 = "";
@@ -156,7 +171,7 @@ function searchIt() {
 
             }
 
-            $("#nowHu").html("Humidity: " + data.current.humidity + " %");
+            $("#nowHu").html("Humidity: " + data.current.humidity + "%");
             $("#nowWi").html("Wind Speed: " + data.current.wind_speed + " MPH");
             $("#nowUv").html("UV Index: " + data.current.uvi);
             iconText = data.current.weather[0].icon + ".png";
@@ -164,48 +179,49 @@ function searchIt() {
 
             // uggg need to figure out a script for th followng (DRY!)
 
-            var htmlcard = "<div class=' col-sm-12'><div class='row'> <div class='card card-body cardBody'>"
+            var htmlcard = "<div class=' col-lg-12'><div class='row'> <div class=' card cardBody'>"
             htmlcard += "<h5 class='card-title'>" + d1date + "<img src=" + d1Icon + "> </img> </h5> ";
             htmlcard += " <ul><li class='card-text' id='day1Te'>" + "Temp: " + day1.temp.day + " F</li>";
-            htmlcard += " <li class='card-text' id='day1Hu'>" + "Humidity: " + day1.humidity + " %</li>";
+            htmlcard += " <li class='card-text' id='day1Hu'>" + "Humidity: " + day1.humidity + "%</li>";
             htmlcard += " <li class='card-text' id='day1Wi'>" + "Wind Speed: " + day1.wind_speed + " MPH</li>";
             htmlcard += " <li class='card-text' id='day1Uv'>" + "UV Index: " + day1.uvi + "</li></ul> </div></div></div>";
-            $(htmlcard).appendTo("#forecast");
+            $("#forecast1").html(htmlcard);
 
-            var htmlcard2 = "<div class='col-md-12'><div class='row'> <div class='card card-body cardBody'>"
+            var htmlcard2 = "<div class='col-lg-12'><div class='row'> <div class='card cardBody'>"
             htmlcard2 += "<h5 class='card-title'>" + d2date + "<img src=" + d2Icon + "> </img> </h5> ";
             htmlcard2 += " <ul><li class='card-text' id='day2Te'>" + "Temp: " + day2.temp.day + " F</li>";
-            htmlcard2 += " <li class='card-text' id='day2Hu'>" + "Humidity: " + day2.humidity + " %</li>";
+            htmlcard2 += " <li class='card-text' id='day2Hu'>" + "Humidity: " + day2.humidity + "%</li>";
             htmlcard2 += " <li class='card-text' id='day2Wi'>" + "Wind Speed: " + day2.wind_speed + " MPH </li>";
             htmlcard2 += " <li class='card-text' id='day2Uv'>" + "UV Index: " + day2.uvi + "</li></ul></div></div></div>";
-            $(htmlcard2).appendTo("#forecast");
+            $("#forecast2").html(htmlcard2);
 
-            var htmlcard3 = "<div class='col-md-12'>  <div class='row'> <div class='card card-body cardBody '>"
+            var htmlcard3 = "<div class='col-md-12'>  <div class='row'> <div class='card  cardBody '>"
             htmlcard3 += "<h5 class='card-title'>" + d3date + "<img src=" + d3Icon + "> </img> </h5>";
             htmlcard3 += " <ul><li class='card-text' id='day1Te'>" + "Temp: " + day3.temp.day + " F</li>";
-            htmlcard3 += " <li class='card-text' id='day3Hu'>" + "Humidity: " + day3.humidity + " %</li>";
+            htmlcard3 += " <li class='card-text' id='day3Hu'>" + "Humidity: " + day3.humidity + "%</li>";
             htmlcard3 += " <li class='card-text' id='day3Wi'>" + "Wind Speed: " + day3.wind_speed + " MPH </li>";
             htmlcard3 += " <li class='card-text' id='day3Uv'>" + "UV Index: " + day3.uvi + "</li></ul></div></div></div>";
-            $(htmlcard3).appendTo("#forecast");
+            $("#forecast3").html(htmlcard3);
 
-            var htmlcard4 = "<div class='col-md-12'>  <div class='row'> <div class='card card-body cardBody '>"
+            var htmlcard4 = "<div class='col-md-12'>  <div class='row'> <div class='card cardBody '>"
             htmlcard4 += "<h5 class='card-title'>" + d4date + "<img src=" + d4Icon + "> </img> </h5>";
             htmlcard4 += " <ul><li class='card-text' id='day4Te'>" + "Temp: " + day4.temp.day + " F</li>";
-            htmlcard4 += " <li class='card-text' id='day4Hu'>" + "Humidity: " + day4.humidity + " %</li>";
+            htmlcard4 += " <li class='card-text' id='day4Hu'>" + "Humidity: " + day4.humidity + "%</li>";
             htmlcard4 += " <li class='card-text' id='day4Wi'>" + "Wind Speed: " + day4.wind_speed + " MPH </li>";
             htmlcard4 += " <li class='card-text' id='day4Uv'>" + "UV Index: " + day4.uvi + "</li></ul></div></div></div>";
-            $(htmlcard4).appendTo("#forecast");
+            $("#forecast4").html(htmlcard4);
 
-            var htmlcard5 = "<div class='col-md-12'>  <div class='row'> <div class='card card-body cardBody '>"
+            var htmlcard5 = "<div class='col-md-12'>  <div class='row'> <div class='card  cardBody '>"
             htmlcard5 += "<h5 class='card-title'>" + d5date + "<img src=" + d5Icon + "> </img> </h5>";
             htmlcard5 += " <ul><li class='card-text' id='day5Te'>" + "Temp: " + day5.temp.day + " F</li>";
-            htmlcard5 += " <li class='card-text' id='day5Hu'>" + "Humidity: " + day5.humidity + " %</li>";
+            htmlcard5 += " <li class='card-text' id='day5Hu'>" + "Humidity: " + day5.humidity + "%</li>";
             htmlcard5 += " <li class='card-text' id='day5Wi'>" + "Wind Speed: " + day5.wind_speed + " MPH</li>";
             htmlcard5 += " <li class='card-text' id='day5Uv'>" + "UV Index: " + day5.uvi + "</li></ul></div></div></div>";
-            $(htmlcard5).appendTo("#forecast");
+            $("#forecast5").html(htmlcard5);
 
 
         }
     })
 
 }
+

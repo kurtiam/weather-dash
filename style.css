@@ -2,9 +2,9 @@ body {
 	background-image: url("./img/dfw2.gif");
 	/* min-height: 100px; */
 	background-size: cover;
-	background-position: center;
+	/* background-position: center; */
 	background-repeat: no-repeat;
-    color: black;
+    color: white;
  
 } 
 
@@ -17,13 +17,13 @@ color: white;
 
     position: relative;
     top: 50px;
-    margin-left: 1px;
+    float: left;
     
 }
 .cardBody {
 height:150px ; 
-width: 650px; 
-margin-left: 0px;
+width: 680px; 
+
 float: left;
 border: white ;
 position: relative;
@@ -32,25 +32,25 @@ background-color: black;
 color: white;
 margin-bottom: 2px;
 border-radius: 50px;
-padding: 2px; 
+padding: 4px; 
 margin-left: 15px; 
-padding-left: 20px; 
+padding-left: 25px; 
 padding-bottom: 10px;
 padding-top: 10px;
 border-style: thin;
+margin-right: 0px; 
 
 } 
 .searchBody {
     position: relative;
     height:150px ;
-  
-    opacity: .7;
+      opacity: .7;
     background-color: black;
     color: white;
     border-radius: 50px;
     padding: 2px; 
     padding-left: 0px; 
-    width: 250px;
+    width: 270px;
     margin-left:0px ;
 }
 
@@ -83,5 +83,33 @@ height: 755px;
 margin-top:75px;
 padding-top:10px;
 width:175px;
+
+}
+
+.hBTN {
+    background-color: black;
+    opacity: .8;/* Green background */
+    border-radius: 30px;
+    border: 1px solid white;  /*Green border */
+    color: white;  /* White text */
+    padding: 5px 25px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 75%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+    margin: auto;
+    text-align: center;
+    outline:none;
+    border-bottom: none;
+    
+}
+
+.btnH:hover {
+    background-color:lightskyblue;
+    color: black;
+}
+.cardBody:hover {
+    background-color:lightskyblue;
+    color: black;
+    opacity: .9;/* Green background */
 
 }

@@ -23,7 +23,7 @@
                 <div class='card searchBody'>
                     <div class='card-body'>
                         <label>City Search:</label>
-                        <div class="input-group sm-4">
+                        <div class="input-group sm-3">
                             <input id="city-search" type="text" class="form-control" placeholder="Plano, Tx">
                             <div class="input-group-append">
                                 <button id='city-weather' class="btn btn-dark" onclick="mySave()" type="submit">
@@ -32,11 +32,11 @@
 
                             </div>
                         </div>
-                        <ul id="myUL" class='cardBody history'>
-                            <div id='history'></div>
+                        <!-- <ul id="myUL" class='cardBody history'> -->
+
 
                         </ul>
-
+                        <div id='myUL' class=' history'></div>
                     </div>
 
                 </div>
@@ -45,7 +45,7 @@
             <!-- city info area -->
             <div class='col-sm-8'>
                 <div class=' row'>
-                    <div class='card  col-md-12 cardBody'>
+                    <div class='card  col-sm-11 cardBody'>
                         <div class='card-body'>
                             <h5 class='card-title' id='curCity'><img id='weatherIcon'></img>
                             </h5>
@@ -66,6 +66,14 @@
 
                 </div>
                 <div class='row' id='forecast'></div>
+
+                <div id='forecast1'></div>
+                <div id='forecast2'></div>
+                <div id='forecast3'></div>
+                <div id='forecast4'></div>
+                <div id='forecast5'></div>
+
+
             </div>
         </div>
     </div>
